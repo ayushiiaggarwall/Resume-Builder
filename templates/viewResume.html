@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}
+View Resume
+{% endblock title %}
+
+{% block body %}
+{% load static %}
+
+<div class=" pt-4 pl-5 pr-5">
+<div class="row">
+    <h2 class="text-center py-3"> {{user_profile.name}}</h2>
+    <hr>
+    <a href={{user_profile.github}}> {{user_profile.github}}</a>
+    <a href="{{user_profile.linkedin}}"> {{user_profile.linkedin}}</a>
+  <div class="col-sm-4">
+  <h4 class="py-3">CONTACT</h4>
+  <p>{{user_profile.address}}</p>
+  <p>{{user_profile.phoneno}}</p>
+  <p>{{user_profile.email}}</p>
+  </div>
+  <div class="col-sm-8">
+  <h4 class="py-3">OBJECTIVE</h4>
+  <p>{{user_profile.objective}}</p>
+  <br>
+  <hr>
+  </div>
+</div>
+<hr class="d-none">
+<div class="row">
+  <div class="col-sm-4">
+  <h4 class="py-3">SKILLS</h4>
+  <p>{{user_profile.skillDetail}}</p>
+  </div>
+  <div class="col-sm-8">
+  <h4 class="py-3">EDUCATION</h4>
+  <p>{{user_profile.degree}} in {{user_profile.stream}} --- ( {{user_profile.univStartingYear}} - {{user_profile.univPassingYear}} ) </p>
+  <p>{{user_profile.university}} </p>
+  <p>{{user_profile.univResult}} </p>
+  <p> Intermediate --- ( {{user_profile.intermediateStartingYear}} - {{user_profile.intermediatePassingYear}} )</p>
+  <p> {{intermediateSchool}} </p>
+  <p> {{intermediateMarks}} in {{intermediateSubjects}} </p>
+  <p> High School --- ( {{user_profile.highSchoolStartingYear}} - {{user_profile.highSchoolPassingYear}} )</p>
+  <p> {{highSchool}} </p>
+  <p> {{highSchoolMarks}} in {{highSchoolSubjects}} </p>
+<hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+  <h4>LANGUAGES</h4>
+  <p>{{user_profile.languageDetail}}</p>
+  </div>
+  <div class="col-sm-8">
+  <h4>EXPERIENCE</h4>
+  <p>{{user_profile.jobTitle}} --- ( {{user_profile.jobStartDate}} - {{user_profile.jobEndDate}} ) </p>
+  <p>{{user_profile.jobDescription}} </p>
+  <p>{{user_profile.projectTitle}} --- ( {{user_profile.projectStartDate}} - {{user_profile.projectEndDate}} ) </p>
+  <p>{{user_profile.projectDescription}} </p>
+<hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    </div>
+  <div class="col-sm-8">
+  <h4>AREAS OF INTEREST</h4>
+  <p>{{user_profile.areaOfInterest}} </p>
+  <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <p> </p>
+    </div>
+<div class="col-sm-8">
+  <h4>EXTRA CURRICULAR ACTIVITIES</h4>
+  <p>{{user_profile.extracurricularDetail}} </p>
+  </div>
+</div>
+
+{% endblock body %}
+

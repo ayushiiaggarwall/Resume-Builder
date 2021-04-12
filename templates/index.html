@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+
+{% block csslink %}
+{% endblock csslink %}
+
+{% block title %}
+HomePage
+{% endblock title %}
+
+{% block body %}
+{% load static %}
+
+
+<section id="home" class="text-center pb-5" style="background-color: #D3D3D3 !important;">
+{% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+{% endfor %}
+
+{% if not request.user.is_authenticated %}
+<h2 class="pt-4 pb-4 display-3 font-weight-bold">
+    Tired of making your perfect resume?
+</h2>
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    <img src="{% static '/images/resume-1.jpg/' %}" class="d-block rounded mx-auto d-block w-50" alt="..."> 
+      <div class="carousel-caption d-none d-md-block">
+        <h4> <span class="text-light bg-dark"> A perfect resume is important as:</span> </h4>
+        <h4> <span class="text-light bg-dark"> It grabs the attention of employers and recruiters.</span> </h4>
+      </div>
+    </div>
+        <div class="carousel-item">
+    <img src="{% static '/images/resume-2.jpg/' %}" class="d-block rounded mx-auto d-block w-50" alt="..."> 
+      <div class="carousel-caption d-none d-md-block">
+        <h4> <span class="text-light bg-dark">A perfect resume is important as: </span> </h4>
+        <h4> <span class="text-light bg-dark"> It sells your strongest skill and accomplishments. </span> </h4>
+      </div>
+    </div>
+        <div class="carousel-item">
+    <img src="{% static '/images/resume-3.jpg/' %}" class="d-block rounded mx-auto d-block w-50" alt="..."> 
+      <div class="carousel-caption d-none d-md-block">
+        <h4> <span class="text-light bg-dark"> A perfect resume is important as: </span> </h4>
+        <h4> <span class="text-light bg-dark"> It shows how you are the match for position and project. </span> </h4>
+      </div>
+    </div>
+        <div class="carousel-item">
+    <img src="{% static '/images/resume-4.jpg/' %}" class="d-block rounded mx-auto d-block w-50" alt="..."> 
+      <div class="carousel-caption d-none d-md-block">
+        <h4> <span class="text-light bg-dark"> A perfect resume is important as: </span> </h4>
+        <h4> <span class="text-light bg-dark"> It gets you a job interview. </span> </h4>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+    </section>
+
+<section id="About" class="pt-5 text-center pb-3" style="background-color: #C0C0C0;">
+
+        <h3 class="display-4 font-weight-bold ml-2 mr-2">Use ResumeBuilder...</h3>
+        <p class="h5 ml-2 mr-2 mt-1">
+            A simple way to build you resume and get started in your career. Just enter your details and your resume is ready in less than 5 mins.
+        </p>
+
+<div class="container-fluid pt-5">
+  <div class="row">
+
+    <div class="col-sm-4 d-flex justify-content-center">
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="{% static '/images/save money.png/' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title text-center"> SAVES YOUR MONEY </h5>
+          <p class="card-text text-center"> Coz its free of cost! </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4 d-flex justify-content-center">
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="{% static '/images/save time.png/' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title text-center"> SAVES YOUR TIME</h5>
+          <p class="card-text text-center">Coz its fast and prepares your resume in less than 5 mins.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4 d-flex justify-content-center">
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="{% static '/images/easy to access.png/' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title text-center"> EASY TO ACCESS</h5>
+          <p class="card-text text-center">Coz it saves your resume and you just need to login to access it anywhere anytime.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+        <p class="h3 ml-2 mr-2 mt-4">
+            So, what are you waiting for? Let's get started!  
+        </p>
+<button type="button" class="btn btn-primary btn-lg mt-4 mb-4"> <a href="/signup" class="text-white" style="text-decoration: none"> CREATE ACCOUNT </a> </button>
+</section>
+
+{% else %}
+
+<div class="card-deck">
+
+{% for data in person %}
+
+  <div class="card">
+    <img class="card-img-top" src="{% static '/images/resume-2.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+
+{% endfor %}
+</div>
+
+
+{% endif %}
+
+<section id="Contact" class="text-center pb-3 pt-2" style="background-color: #A9A9A9;">
+<h3 class="pt-3 display-4 font-weight-bold ml-2 mr-2">Contact Us</h3>
+        <p class="h5 ml-2 mr-2 mt-1 mb-2 pb-3">We will try to resolve your problem as soon as possible.</p>
+        <div class="container mt-3">
+        <form action="#Contact" method="POST"> {% csrf_token %}
+        <div class="row">
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Enter your Name" required>
+            </div>
+        <div class="form-group col-md-4">
+            <input type="email" class="form-control mb-3" id="email" name="email" value="{{user.email}}" placeholder="Enter your email" required>
+            </div>
+        <div class="form-group col-md-4">
+            <input type="tel" class="form-control mb-3" id="phoneno" name="phoneno" placeholder="Enter your Phone number" required>
+            </div>
+            </div>
+        <div class="form-group">
+            <textarea id="msg" name="msg" cols="90" rows="5" class="form-control" placeholder="Enter your message" required></textarea>
+            </div>
+            <button class="btn btn-dark d-grid mx-auto mt-2" type="submit">SUBMIT</button>
+            </form>
+            </div>
+</section>
+
+<!-- Footer -->
+<footer class="page-footer font-small cyan darken-3 text-center" style="background-color: #383838;">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!-- Grid row-->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-12 py-5 my-4">
+        <div class="mb-5 flex-center">
+
+          <!-- Facebook -->
+          <div class="mx-3 d-inline">
+          <div class="d-inline bg-light rounded-circle px-3 py-3">
+          <a href="#" class="fb-ic text-dark" style="text-decoration: none">
+            <i class="fab fa-facebook-f fa-lg white-text fa-2x"> </i>
+          </a>
+          </div>
+          </div>
+          <!-- Twitter -->
+          <div class="mx-3 d-inline">
+          <div class="d-inline bg-light rounded-circle px-2 py-3">
+          <a href="#" class="tw-ic text-dark" style="text-decoration: none">
+            <i class="fab fa-twitter fa-lg white-text fa-2x"> </i>
+          </a>
+          </div>
+          </div>
+          <!-- Google +-->
+          <div class="mx-3 d-inline">
+          <div class="d-inline bg-light rounded-circle px-2 py-3">
+          <a href="#" class="gplus-ic  text-dark" style="text-decoration: none">
+            <i class="fab fa-google-plus-g fa-lg white-text fa-2x"> </i>
+          </a>
+          </div>
+          </div>
+          <!--Linkedin -->
+          <div class="mx-3 d-inline">
+          <div class="d-inline bg-light rounded-circle px-3 py-3">
+          <a href="#" class="li-ic text-dark" style="text-decoration: none">
+            <i class="fab fa-linkedin-in fa-lg white-text fa-2x"> </i>
+          </a>
+          </div>
+          </div>
+          <!--Instagram-->
+          <div class="mx-3 d-inline">
+          <div class="d-inline bg-light rounded-circle px-3 py-3">
+          <a href="#" class="ins-ic text-dark" style="text-decoration: none">
+            <i class="fab fa-instagram fa-lg white-text fa-2x"> </i>
+          </a>
+          </div>
+          </div>
+          <!--Pinterest-->
+          <div class="mx-3 d-inline">
+          <div class="d-inline bg-light rounded-circle px-3 py-3">
+          <a href="#" class="pin-ic text-dark" style="text-decoration: none">
+            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+          </a>
+          </div>
+          </div>
+        </div>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3 text-light">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/ text-light" style="text-decoration: none"> MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+{% endblock body %}
+        

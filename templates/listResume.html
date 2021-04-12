@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+List Resume
+{% endblock title %}
+
+{% block body %}
+{% load static %}
+<div class="card-deck">
+
+{% for profile in profile %}
+
+<div class="container-fluid pt-5 pb-3">
+  <div class="row">
+  <div class="col-sm-3"> </div>
+    <div class="col-sm-6 d-flex justify-content-center">
+      <div class="card" style="width: 20rem;">  <div class="card">
+    <img class="card-img-top" src="{% static '/images/resume-5.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"> {{profile.name}}</h5>
+      <p class="card-text">{{profile.objective}}</p>
+    </div>
+    <div class="card-footer text-center">
+    <a href="/{{profile.id}}" class="btn btn-success"> Download Resume </a>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="col-sm-3"> </div>
+  </div>
+  </div>
+  
+  {% endfor%}
+
+{% endblock body %}
