@@ -1,0 +1,22 @@
+.navactive{
+    color: white !important;
+}
+
+.navactive:hover{
+    background-color: white;
+    color: black !important;
+}
+
+.navactive:active{
+    background-color: white;
+    color: black !important;   
+}
+
+.vl {
+    border-left: 6px solid rgb(123, 123, 128);
+    height: auto;
+}
+
+.hl{
+    border-bottom: 6px solid black;
+}

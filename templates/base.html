@@ -7,6 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    {% load static %}
+    {% comment %} External CSS link {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
      <!-- Bootstrap CSS -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
@@ -41,23 +45,25 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a href="#home" class="nav-link text-white {% block home %} {% endblock home %}" aria-current="page">Home</a>
+                <a href="/" class="nav-link navactive {% block home %} {% endblock home %}" aria-current="page">Home</a>
               </li>
               {% if not request.user.is_authenticated %}
               <li class="nav-item">
-                <a href="About" class="nav-link text-white {% block about %} {% endblock about %}">About</a>
+                <a href="/#About" class="nav-link navactive {% block about %} {% endblock about %}">About</a>
               </li>
               {% endif %}
 
               <li class="nav-item">
-                <a href="#Contact"  class="nav-link text-white {% block contact %} {% endblock contact %}" >Contact</a>
+                <a href="/#Contact"  class="nav-link navactive {% block contact %} {% endblock contact %}" >Contact</a>
               </li>
 
             {% if not request.user.is_authenticated %}
 
+            </ul>
+            <ul class="nav nav-pills justify-content-end ml-auto">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Authentication
+                <a class="nav-link dropdown-toggle navactive" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Hello User! Signup or Login
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="/signup">SIGNUP</a></li>
@@ -67,18 +73,19 @@
               </li>
             </ul>
 
-
             {% else %}
 
             <li class="nav-item">
-              <a class="nav-link text-white {% block addResume %} {% endblock addResume %}" href="/addResume">Add Resume</a>
+              <a class="nav-link navactive {% block addResume %} {% endblock addResume %}" href="/addResume">Add Resume</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white {% block viewResume %} {% endblock viewResume %}" href="/viewResume">View Resume</a>
+              <a class="nav-link navactive {% block viewResume %} {% endblock viewResume %}" href="/listResume">View Resumes</a>
             </li>
+            </ul>
 
+          <ul class="nav nav-pills justify-content-end ml-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle navactive" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Welcome {{user.username}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -88,10 +95,6 @@
               </ul>
             {% endif %}
 
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
           </div>
         </div>
       </nav>
