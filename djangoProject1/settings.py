@@ -12,22 +12,23 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(2*%%0hfkayuf!8^2ox#!1ra9&#!v775fi$q9c=e-^&+xbou2u'
+SECRET_KEY = 'dummy key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ayuresumebuilder.herokuapp.com']
 
 
 # Application definition
@@ -44,8 +45,7 @@ INSTALLED_APPS = [
     'allauth',   
     'allauth.account',  
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    'wkhtmltopdf', 
+    'allauth.socialaccount.providers.google', 
 ]
 
 MIDDLEWARE = [
@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoProject1.urls'
@@ -85,7 +86,7 @@ WSGI_APPLICATION = 'djangoProject1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR,'db.sqlite3')),
     }
 }
 
@@ -94,7 +95,7 @@ AUTHENTICATION_BACKENDS = (
  'allauth.account.auth_backends.AuthenticationBackend',
  )
 
-SITE_ID = 2
+SITE_ID = 3
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -127,7 +128,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -144,8 +144,8 @@ USE_TZ = True
 #EMAIL CREDENTIALS AND EMAIL BACKEND AUTHENTICATIONS
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'aggarwalayushi0306@gmail.com'
-EMAIL_HOST_PASSWORD = 'Password'
+EMAIL_HOST_USER = 'dummy email'
+EMAIL_HOST_PASSWORD = 'dummy password'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -159,6 +159,16 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
+
 MESSAGE_TAGS = {
     messages.ERROR: "danger",
 }
+
+#Activate Django-Heroku
+# django_heroku.settings(locals())
