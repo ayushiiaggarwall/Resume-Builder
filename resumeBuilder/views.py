@@ -7,25 +7,12 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.core import mail
 from django.core.mail.message import EmailMessage
-from django.http import HttpResponse
-from django.template import loader, Context
-from django.template.loader import get_template
 from django.views import View
-import io as StringIO
-from io import StringIO, BytesIO
-import urllib
-import urllib.request
-from bs4 import BeautifulSoup
 import csv
 import os
-from xhtml2pdf import pisa
-from reportlab.platypus.doctemplate import SimpleDocTemplate, Spacer
-from reportlab.platypus.paragraph import Paragraph
-from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.lib.units import inch
 from django.views.generic import View
-import pdfkit
+from django.forms.models import model_to_dict
+
 
 # Create your views here.
 
@@ -44,7 +31,7 @@ def index(request):
         from_email = settings.EMAIL_HOST_USER
         connection = mail.get_connection()
         connection.open()
-        email_message = mail.EmailMessage(f'Email From {name}', f'User Email : {email}\n User Phone Number:{phoneno}\n Message from User: {msg}', from_email, ['aggarwalayushi0306@gmail.com'], connection=connection)
+        email_message = mail.EmailMessage(f'Email From {name}', f'User Email : {email}\n User Phone Number:{phoneno}\n Message from User: {msg}', from_email, ['ayuresumebuilder@gmail.com'], connection=connection)
 
         email_message_user = mail.EmailMessage(f'ResumeBuilder Response', f'Hey {name}\n\n Thanks for reaching us.\n We will get back to you soon.', from_email, [email], connection=connection)
 
@@ -56,24 +43,6 @@ def index(request):
 
 
     return render(request, 'index.html')
-
-
-def search (request):
-    query = request.GET['search']
-    if len(query)>78:
-        allPosts = Profile.objects.none()
-    else:
-        allPostsTitle = Profile.objects.filter(name__icontains=query)
-        allPostsContent = Profile.objects.filter(objective__icontains=query)
-        allPosts = allPostsTitle.union(allPostsContent)
-
-    if allPosts.count() == 0:
-        messages.warning(request, "No search results")
-
-    params = {'allPosts': allPosts, 'query': query}
-
-    return render(request, 'search.html', params)
-
 
 
 def signupPage(request):
@@ -138,6 +107,7 @@ def loginPage(request):
 
 def addResume(request):
     if request.method == "POST":
+        userid = request.POST.get("userid")
         name =request.POST.get("name") 
         objective =request.POST.get("objective") 
         address =request.POST.get("address") 
@@ -158,7 +128,7 @@ def addResume(request):
         currentYear2 =request.POST.get("currentYear2") 
         univStartingYear2 =request.POST.get("univStartingYear2") 
         univPassingYear2 =request.POST.get("univPassingYear2") 
-        univResult2 =request.POST.get("univResult22")
+        univResult2 =request.POST.get("univResult2")
         intermediateSchool =request.POST.get("intermediateSchool") 
         intermediateSubjects =request.POST.get("intermediateSubjects") 
         intermediateStartingYear =request.POST.get("intermediateStartingYear") 
@@ -174,7 +144,7 @@ def addResume(request):
         jobEndDate1 =request.POST.get("jobEndDate1") 
         jobDescription1 =request.POST.get("jobDescription1") 
         jobTitle2 =request.POST.get("jobTitle2") 
-        jobStartDate =request.POST.get("jobStartDate2") 
+        jobStartDate2 =request.POST.get("jobStartDate2") 
         jobEndDate2 =request.POST.get("jobEndDate2") 
         jobDescription2 =request.POST.get("jobDescription2") 
         jobTitle3 =request.POST.get("jobTitle3") 
@@ -214,22 +184,29 @@ def addResume(request):
         areaOfInterest =request.POST.get("areaOfInterest") 
         extracurricularDetail =request.POST.get("extracurricularDetail") 
 
-        profile = Profile (name=name, objective=objective, address=address, phoneno=phoneno, email=email, github=github, linkedin=linkedin, university1=university1, degree1=degree1, stream1=stream1, currentYear1=currentYear1, univStartingYear1=univStartingYear1, univPassingYear1=univPassingYear1, univResult1=univResult1, university2=university2, degree2=degree2, stream2=stream2, currentYear2=currentYear2, univStartingYear2=univStartingYear2, univPassingYear2=univPassingYear2, univResult2=univResult2, intermediateSchool=intermediateSchool, intermediateSubjects=intermediateSubjects, intermediateStartingYear=intermediateStartingYear, intermediatePassingYear=intermediatePassingYear, highSchool=highSchool, highSchoolSubjects=highSchoolSubjects, highSchoolStartingYear=highSchoolStartingYear, highSchoolPassingYear=highSchoolPassingYear, highSchoolMarks=highSchoolMarks, jobTitle1=jobTitle1, jobStartDate1=jobStartDate1, jobEndDate1=jobEndDate1, jobDescription1=jobDescription1, jobTitle2=jobTitle2, jobStartDate2=jobStartDate2, jobEndDate2=jobEndDate2, jobDescription2=jobDescription2, jobTitle3=jobTitle3, jobStartDate3=jobStartDate3, jobEndDate3=jobEndDate3, jobDescription3=jobDescription3, jobTitle4=jobTitle4, jobStartDate4=jobStartDate4, jobEndDate4=jobEndDate4, jobDescription4=jobDescription4, jobTitle5=jobTitle5, jobStartDate5=jobStartDate5, jobEndDate5=jobEndDate5, jobDescription5=jobDescription5, projectTitle1=projectTitle1, projectStartDate1=projectStartDate1, projectEndDate1=projectEndDate1, projectDescription1=projectDescription1, projectTitle2=projectTitle2, projectStartDate2=projectStartDate2, projectEndDate2=projectEndDate2, projectDescription2=projectDescription2, projectTitle3=projectTitle3, projectStartDate3=projectStartDate3, projectEndDate3=projectEndDate3, projectDescription3=projectDescription3, projectTitle4=projectTitle4, projectStartDate4=projectStartDate4, projectEndDate4=projectEndDate4, projectDescription4=projectDescription4, projectTitle5=projectTitle5, projectStartDate5=projectStartDate5, projectEndDate5=projectEndDate5, projectDescription5=projectDescription5, skillDetail=skillDetail, languageDetail=languageDetail, areaOfInterest=areaOfInterest, extracurricularDetail=extracurricularDetail)
+        profile = Profile (userid=userid, name=name, objective=objective, address=address, phoneno=phoneno, email=email, github=github, linkedin=linkedin, university1=university1, degree1=degree1, stream1=stream1, currentYear1=currentYear1, univStartingYear1=univStartingYear1, univPassingYear1=univPassingYear1, univResult1=univResult1, university2=university2, degree2=degree2, stream2=stream2, currentYear2=currentYear2, univStartingYear2=univStartingYear2, univPassingYear2=univPassingYear2, univResult2=univResult2, intermediateSchool=intermediateSchool, intermediateSubjects=intermediateSubjects, intermediateStartingYear=intermediateStartingYear, intermediatePassingYear=intermediatePassingYear, highSchool=highSchool, highSchoolSubjects=highSchoolSubjects, highSchoolStartingYear=highSchoolStartingYear, highSchoolPassingYear=highSchoolPassingYear, highSchoolMarks=highSchoolMarks, jobTitle1=jobTitle1, jobStartDate1=jobStartDate1, jobEndDate1=jobEndDate1, jobDescription1=jobDescription1, jobTitle2=jobTitle2, jobStartDate2=jobStartDate2, jobEndDate2=jobEndDate2, jobDescription2=jobDescription2, jobTitle3=jobTitle3, jobStartDate3=jobStartDate3, jobEndDate3=jobEndDate3, jobDescription3=jobDescription3, jobTitle4=jobTitle4, jobStartDate4=jobStartDate4, jobEndDate4=jobEndDate4, jobDescription4=jobDescription4, jobTitle5=jobTitle5, jobStartDate5=jobStartDate5, jobEndDate5=jobEndDate5, jobDescription5=jobDescription5, projectTitle1=projectTitle1, projectStartDate1=projectStartDate1, projectEndDate1=projectEndDate1, projectDescription1=projectDescription1, projectTitle2=projectTitle2, projectStartDate2=projectStartDate2, projectEndDate2=projectEndDate2, projectDescription2=projectDescription2, projectTitle3=projectTitle3, projectStartDate3=projectStartDate3, projectEndDate3=projectEndDate3, projectDescription3=projectDescription3, projectTitle4=projectTitle4, projectStartDate4=projectStartDate4, projectEndDate4=projectEndDate4, projectDescription4=projectDescription4, projectTitle5=projectTitle5, projectStartDate5=projectStartDate5, projectEndDate5=projectEndDate5, projectDescription5=projectDescription5, skillDetail=skillDetail, languageDetail=languageDetail, areaOfInterest=areaOfInterest, extracurricularDetail=extracurricularDetail)
         profile.save()
 
-    return render(request, 'addResume.html' )   
+        messages.success(request, "Your resume has been successfully added!")
+        return redirect('/addResume')
+
+    return render(request, 'addResume.html')   
 
 
 def viewResume(request, id):
     user_profile = Profile.objects.get(pk=id)
-    # template = loader.get_template(viewResume)
-
     return render(request, "viewResume.html", {'user_profile':user_profile})
    
 
 def listResume(request):
-    profile=Profile.objects.all()
-    return render(request, "listResume.html", {'profile':profile})
+    current_user = request.user.username
+    userid = Profile.userid
+
+    if Profile.objects.filter(userid = current_user).exists():
+        profile=Profile.objects.filter(userid = current_user)
+        return render(request, "listResume.html", {'profile':profile})
+        
+    return render(request, "listResume.html")
 
 
 def logoutPage(request):
