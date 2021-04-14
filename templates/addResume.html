@@ -1,322 +1,416 @@
 {% extends 'base.html' %}
 
+<!-- changing title of page -->
+
 {% block title %}
 Add Resume
 {% endblock title %}
 
 {% block body %}
-<div class="container">
-        <div class="row pt-2">
-            <div class="text-center col-md-6"></div>
-            <div class="col-md-12 mt-3 mb-3 ml-2 mr-2 my-auto border border-dark border-2 rounded-3">
-                <h3 class="text-center mb-3 mt-3">ADD DETAILS FOR RESUME</h3>
 
-<form action="/addResume" method="post">{% csrf_token %}
-                    <label for="name" class="form-label">Full Name*</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Enter your full name" required>
-                    </div>
-                    <label for="objective" class="form-label">Objective*</label>
-                    <div class="form-group">
-                        <textarea id="objective" name="objective" cols="90" rows="3" class="form-control" placeholder="Enter something about you" required></textarea>
-                    </div>
-                    <label for="address" class="form-label">Address*</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="address" name="address" placeholder="Enter your address" required>
-                    </div>
-                    <label for="tel" class="form-label">Phone Number*</label>
-                    <div class="form-group">
-                        <input type="number" class="form-control mb-3" id="phoneno" name="phoneno" placeholder="Enter your phone number" required>
-                    </div>
-                    <label for="email" class="form-label">Email ID*</label>
-                    <div class="form-group">
-                        <input type="email" class="form-control mb-3" id="email" name="email" placeholder="Enter your email id" required>
-                    </div>
-                    <label for="github" class="form-label">Git Hub profile link</label>
-                    <div class="form-group">
-                        <input type="url" class="form-control mb-3" id="github" name="github" placeholder="Enter your github profile link">
-                    </div>
-                    <label for="linkedin" class="form-label">Linkedin Profile link</label>
-                    <div class="form-group">
-                        <input type="url" class="form-control mb-3" id="linkedin" name="linkedin" placeholder="Enter your linkedin profile link">
-                    </div>
-                    <label for="university1" class="form-label">University Name</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="university1" name="university1" placeholder="Enter your University Name" >
-                    </div>
-                    <label for="degree1" class="form-label">Degree</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="degree1" name="degree1" placeholder="Enter your degree">
-                    </div>
-                    <label for="stream1" class="form-label">Stream</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="stream1" name="stream1" placeholder="Enter your Stream">
-                    </div>
-                    <label for="currentYear1" class="form-label">University Current Year</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="currentYear1" name="currentYear1" placeholder="Enter the current year which you are studying in">
-                    </div>
-                    <label for="univStartingYear1" class="form-label">University Starting Year</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="univStartingYear1" name="univStartingYear1" placeholder="Enter your university starting year">
-                    </div>
-                    <label for="univPassingYear1" class="form-label">University Passing Year</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="univPassingYear1" name="univPassingYear1" placeholder="Enter your university passing year" >
-                    </div>
-                    <label for="univResult1" class="form-label">University Result</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="univResult1" name="univResult1" placeholder="Enter your university score" >
-                    </div>
-                    <label for="university2" class="form-label">University Name</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="university2" name="university2" placeholder="Enter your University Name" >
-                    </div>
-                    <label for="degree2" class="form-label">Degree</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="degree2" name="degree2" placeholder="Enter your degree">
-                    </div>
-                    <label for="stream2" class="form-label">Stream</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="stream2" name="stream2" placeholder="Enter your Stream">
-                    </div>
-                    <label for="currentYear2" class="form-label">University Current Year</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="currentYear" name="currentYear2" placeholder="Enter the current year which you are studying in">
-                    </div>
-                    <label for="univStartingYear2" class="form-label">University Starting Year</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="univStartingYear2" name="univStartingYear2" placeholder="Enter your university starting year">
-                    </div>
-                    <label for="univPassingYear2" class="form-label">University Passing Year</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="univPassingYear2" name="univPassingYear2" placeholder="Enter your university passing year" >
-                    </div>
-                    <label for="univResult2" class="form-label">University Result</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="univResult2" name="univResult2" placeholder="Enter your university score" >
-                    </div>
-                    <label for="intermediateSchool" class="form-label">Intermediate School Name</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="intermediateSchool" name="intermediateSchool" placeholder="Enter your intermediate school name" >
-                    </div>
-                    <label for="intermediateSubjects" class="form-label">Intermediate Board and Subjects</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="intermediateSubjects" name="intermediateSubjects" placeholder="Enter your intermediate subjects you had">
-                    </div>
-                    <label for="intermediateStartingYear" class="form-label">Intermediate Starting Year</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="intermediateStartingYear" name="intermediateStartingYear" placeholder="Enter your intermediate starting year" >
-                    </div>
-                    <label for="intermediatePassingYear" class="form-label">Intermediate Passing Year</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="intermediatePassingYear" name="intermediatePassingYear" placeholder="Enter your intermediate passing year">
-                    </div>
-                    <label for="intermediateMarks" class="form-label">Intermediate Marks</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="intermediateMarks" name="intermediateMarks" placeholder="Enter your intermediate marks" >
-                    </div>
-                    <label for="highSchool" class="form-label">High School Name</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="highSchool" name="highSchool" placeholder="Enter your high school name">
-                    </div>
-                    <label for="highSchoolSubjects" class="form-label">High School Board and Subjects</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="highSchoolSubjects" name="highSchoolSubjects" placeholder="Enter your high school subjects you had">
-                    </div>
-                    <label for="highSchoolStartingYear" class="form-label">High School Starting Year</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="highSchoolStartingYear" name="highSchoolStartingYear" placeholder="Enter your high school starting year">
-                    </div>
-                    <label for="highSchoolPassingYear" class="form-label">High School Passing Year</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="highSchoolPassingYear" name="highSchoolPassingYear" placeholder="Enter your high school passing year" >
-                    </div>
-                    <label for="highSchoolMarks" class="form-label">High School Marks</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="highSchoolMarks" name="highSchoolMarks" placeholder="Enter your high school marks" >
-                    </div>
-                    <label for="jobTitle1" class="form-label">Job Title</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="jobTitle1" name="jobTitle1" placeholder="Enter your job details">
-                    </div>
-                    <label for="jobStartDate1" class="form-label">Job Starting Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="jobStartDate1" name="jobStartDate1" placeholder="Enter your job's starting date">
-                    </div>
-                    <label for="jobEndDate1" class="form-label">Job Ending Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="jobEndDate1" name="jobEndDate1" placeholder="Enter your job's ending date">
-                    </div>
-                    <label for="jobDescription1" class="form-label">Job Description</label>
-                    <div class="form-group">
-                        <textarea id="jobDescription1" name="jobDescription1" cols="90" rows="3" class="form-control" placeholder="Enter your job description"></textarea>
-                    </div>
-                    <label for="jobTitle2" class="form-label">Job Title</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="jobTitle2" name="jobTitle2" placeholder="Enter your job details">
-                    </div>
-                    <label for="jobStartDate2" class="form-label">Job Starting Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="jobStartDate2" name="jobStartDate2" placeholder="Enter your job's starting date">
-                    </div>
-                    <label for="jobEndDate2" class="form-label">Job Ending Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="jobEndDate2" name="jobEndDate2" placeholder="Enter your job's ending date">
-                    </div>
-                    <label for="jobDescription2" class="form-label">Job Description</label>
-                    <div class="form-group">
-                        <textarea id="jobDescription2" name="jobDescription2" cols="90" rows="3" class="form-control" placeholder="Enter your job description"></textarea>
-                    </div>
-                    <label for="jobTitle3" class="form-label">Job Title</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="jobTitle3" name="jobTitle3" placeholder="Enter your job details">
-                    </div>
-                    <label for="jobStartDate3" class="form-label">Job Starting Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="jobStartDate3" name="jobStartDate3" placeholder="Enter your job's starting date">
-                    </div>
-                    <label for="jobEndDate3" class="form-label">Job Ending Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="jobEndDate3" name="jobEndDate3" placeholder="Enter your job's ending date">
-                    </div>
-                    <label for="jobDescription3" class="form-label">Job Description</label>
-                    <div class="form-group">
-                        <textarea id="jobDescription3" name="jobDescription3" cols="90" rows="3" class="form-control" placeholder="Enter your job description"></textarea>
-                    </div>
-                    <label for="jobTitle4" class="form-label">Job Title</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="jobTitle4" name="jobTitle4" placeholder="Enter your job details">
-                    </div>
-                    <label for="jobStartDate4" class="form-label">Job Starting Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="jobStartDate4" name="jobStartDate4" placeholder="Enter your job's starting date">
-                    </div>
-                    <label for="jobEndDate4" class="form-label">Job Ending Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="jobEndDate4" name="jobEndDate4" placeholder="Enter your job's ending date">
-                    </div>
-                    <label for="jobDescription4" class="form-label">Job Description</label>
-                    <div class="form-group">
-                        <textarea id="jobDescription4" name="jobDescription4" cols="90" rows="3" class="form-control" placeholder="Enter your job description"></textarea>
-                    </div>
-                    <label for="jobTitle5" class="form-label">Job Title</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="jobTitle5" name="jobTitle5" placeholder="Enter your job details">
-                    </div>
-                    <label for="jobStartDate5" class="form-label">Job Starting Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="jobStartDate5" name="jobStartDate5" placeholder="Enter your job's starting date">
-                    </div>
-                    <label for="jobEndDate5" class="form-label">Job Ending Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="jobEndDate5" name="jobEndDate5" placeholder="Enter your job's ending date">
-                    </div>
-                    <label for="jobDescription5" class="form-label">Job Description</label>
-                    <div class="form-group">
-                        <textarea id="jobDescription5" name="jobDescription5" cols="90" rows="3" class="form-control" placeholder="Enter your job description"></textarea>
-                    </div>
-                    <label for="projectTitle1" class="form-label">Project Title</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="projectTitle1" name="projectTitle1" placeholder="Enter your project title">
-                    </div>
-                    <label for="projectStartDate1" class="form-label">Project Starting Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="projectStartDate1" name="projectStartDate1" placeholder="Enter your project's starting date">
-                    </div>
-                    <label for="projectEndDate1" class="form-label">Project Ending Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="projectEndDate1" name="projectEndDate1" placeholder="Enter your project's ending date" >
-                    </div>
-                    <label for="projectDescription1" class="form-label">Project Description</label>
-                    <div class="form-group">
-                    <textarea id="projectDescription1" name="projectDescription1" cols="90" rows="3" class="form-control" placeholder="Enter your project description"></textarea>
-                    </div>
-                    <label for="projectTitle2" class="form-label">Project Title</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="projectTitle2" name="projectTitle2" placeholder="Enter your project title">
-                    </div>
-                    <label for="projectStartDate2" class="form-label">Project Starting Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="projectStartDate2" name="projectStartDate2" placeholder="Enter your project's starting date">
-                    </div>
-                    <label for="projectEndDate2" class="form-label">Project Ending Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="projectEndDate2" name="projectEndDate2" placeholder="Enter your project's ending date" >
-                    </div>
-                    <label for="projectDescription2" class="form-label">Project Description</label>
-                    <div class="form-group">
-                    <textarea id="projectDescription2" name="projectDescription2" cols="90" rows="3" class="form-control" placeholder="Enter your project description"></textarea>
-                    </div>
-                    <label for="projectTitle3" class="form-label">Project Title</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="projectTitle3" name="projectTitle3" placeholder="Enter your project title">
-                    </div>
-                    <label for="projectStartDate3" class="form-label">Project Starting Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="projectStartDate3" name="projectStartDate3" placeholder="Enter your project's starting date">
-                    </div>
-                    <label for="projectEndDate3" class="form-label">Project Ending Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="projectEndDate3" name="projectEndDate3" placeholder="Enter your project's ending date" >
-                    </div>3
-                    <label for="projectDescription3" class="form-label">Project Description</label>
-                    <div class="form-group">
-                    <textarea id="projectDescription3" name="projectDescription3" cols="90" rows="3" class="form-control" placeholder="Enter your project description"></textarea>
-                    </div>
-                    <label for="projectTitle4" class="form-label">Project Title</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="projectTitle4" name="projectTitle4" placeholder="Enter your project title">
-                    </div>
-                    <label for="projectStartDate4" class="form-label">Project Starting Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="projectStartDate4" name="projectStartDate4" placeholder="Enter your project's starting date">
-                    </div>
-                    <label for="projectEndDate4" class="form-label">Project Ending Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="projectEndDate4" name="projectEndDate4" placeholder="Enter your project's ending date" >
-                    </div>
-                    <label for="projectDescription4" class="form-label">Project Description</label>
-                    <div class="form-group">
-                    <textarea id="projectDescription4" name="projectDescription4" cols="90" rows="3" class="form-control" placeholder="Enter your project description"></textarea>
-                    </div>
-                    <label for="projectTitle5" class="form-label">Project Title</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="projectTitle5" name="projectTitle5" placeholder="Enter your project title">
-                    </div>
-                    <label for="projectStartDate5" class="form-label">Project Starting Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="projectStartDate5" name="projectStartDate5" placeholder="Enter your project's starting date">
-                    </div>
-                    <label for="projectEndDate5" class="form-label">Project Ending Date</label>
-                    <div class="form-group">
-                        <input type="month" class="form-control mb-3" id="projectEndDate5" name="projectEndDate5" placeholder="Enter your project's ending date" >
-                    </div>
-                    <label for="projectDescription5" class="form-label">Project Description</label>
-                    <div class="form-group">
-                    <textarea id="projectDescription5" name="projectDescription5" cols="90" rows="3" class="form-control" placeholder="Enter your project description"></textarea>
-                    </div>
-                    <label for="skillDetail" class="form-label"> Skills* </label>
-                    <div class="form-group">
-                        <textarea id="skillDetail" name="skillDetail" cols="90" rows="3" class="form-control" placeholder="Enter your skills"></textarea>
-                    </div>
-                    <label for="languageDetail" class="form-label">Languages*</label>
-                    <div class="form-group">
-                        <textarea id="languageDetail" name="languageDetail" cols="90" rows="3" class="form-control" placeholder="Enter the languages that you know" required></textarea>
-                    </div>
-                    <label for="areaOfInterest" class="form-label">Area of Interest</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="areaOfInterest" name="areaOfInterest" placeholder="Enter your areas of interest">
-                    </div>
-                    <label for="extracurricularDetail" class="form-label">Extra curricular activities</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="extracurricularDetail" name="extracurricularDetail" placeholder="Enter the extra curricular activities you took part in" >
-                    </div>
-                    
-                    <button class="btn btn-dark d-grid mx-auto col-6 mt-4 mb-3" type="submit">SUBMIT</button>
-                </form>
+<!-- creating container for adding details -->
+
+<div class="container">
+    <div class="row pt-2 mb-3">
+        <div class="text-center col-md-6"></div>
+        <div class="col-md-12 mt-3 mb-3 ml-2 mr-2 my-auto border border-dark border-2 rounded-3">
+            <h3 class="text-center mb-3 mt-3">ADD DETAILS FOR RESUME</h3>
+
+{% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+
+            <!-- creating form for adding resume details -->
+
+            <form action="/addResume" method="post">{% csrf_token %}
+                <label for="userid" class="form-label">User ID*</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="userid" name="userid" value="{{user.username}}"
+                        placeholder="Enter your resume byuilder user id" required>
                 </div>
+                <label for="name" class="form-label">Full Name*</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="name" name="name"
+                        placeholder="Enter your full name" required>
                 </div>
+                <label for="objective" class="form-label">Objective*</label>
+                <div class="form-group">
+                    <textarea id="objective" name="objective" cols="90" rows="3" class="form-control"
+                        placeholder="Enter something about you" required></textarea>
                 </div>
+                <label for="address" class="form-label">Address*</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="address" name="address"
+                        placeholder="Enter your address" required>
                 </div>
+                <label for="tel" class="form-label">Phone Number*</label>
+                <div class="form-group">
+                    <input type="number" class="form-control mb-3" id="phoneno" name="phoneno"
+                        placeholder="Enter your phone number" required>
+                </div>
+                <label for="email" class="form-label">Email ID*</label>
+                <div class="form-group">
+                    <input type="email" class="form-control mb-3" id="email" name="email"
+                        placeholder="Enter your email id" required>
+                </div>
+                <label for="github" class="form-label">Git Hub profile link</label>
+                <div class="form-group">
+                    <input type="url" class="form-control mb-3" id="github" name="github"
+                        placeholder="Enter your github profile link">
+                </div>
+                <label for="linkedin" class="form-label">Linkedin Profile link</label>
+                <div class="form-group">
+                    <input type="url" class="form-control mb-3" id="linkedin" name="linkedin"
+                        placeholder="Enter your linkedin profile link">
+                </div>
+                <label for="university1" class="form-label">University Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="university1" name="university1"
+                        placeholder="Enter your University Name">
+                </div>
+                <label for="degree1" class="form-label">Degree</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="degree1" name="degree1"
+                        placeholder="Enter your degree">
+                </div>
+                <label for="stream1" class="form-label">Stream</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="stream1" name="stream1"
+                        placeholder="Enter your Stream">
+                </div>
+                <label for="currentYear1" class="form-label">University Current Year</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="currentYear1" name="currentYear1"
+                        placeholder="Enter the current year which you are studying in">
+                </div>
+                <label for="univStartingYear1" class="form-label">University Starting Year</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="univStartingYear1" name="univStartingYear1"
+                        placeholder="Enter your university starting year">
+                </div>
+                <label for="univPassingYear1" class="form-label">University Passing Year</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="univPassingYear1" name="univPassingYear1"
+                        placeholder="Enter your university passing year">
+                </div>
+                <label for="univResult1" class="form-label">University Result</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="univResult1" name="univResult1"
+                        placeholder="Enter your university score">
+                </div>
+                <label for="university2" class="form-label">University Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="university2" name="university2"
+                        placeholder="Enter your University Name">
+                </div>
+                <label for="degree2" class="form-label">Degree</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="degree2" name="degree2"
+                        placeholder="Enter your degree">
+                </div>
+                <label for="stream2" class="form-label">Stream</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="stream2" name="stream2"
+                        placeholder="Enter your Stream">
+                </div>
+                <label for="currentYear2" class="form-label">University Current Year</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="currentYear" name="currentYear2"
+                        placeholder="Enter the current year which you are studying in">
+                </div>
+                <label for="univStartingYear2" class="form-label">University Starting Year</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="univStartingYear2" name="univStartingYear2"
+                        placeholder="Enter your university starting year">
+                </div>
+                <label for="univPassingYear2" class="form-label">University Passing Year</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="univPassingYear2" name="univPassingYear2"
+                        placeholder="Enter your university passing year">
+                </div>
+                <label for="univResult2" class="form-label">University Result</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="univResult2" name="univResult2"
+                        placeholder="Enter your university score">
+                </div>
+                <label for="intermediateSchool" class="form-label">Intermediate School Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="intermediateSchool" name="intermediateSchool"
+                        placeholder="Enter your intermediate school name">
+                </div>
+                <label for="intermediateSubjects" class="form-label">Intermediate Board and Subjects</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="intermediateSubjects" name="intermediateSubjects"
+                        placeholder="Enter your intermediate subjects you had">
+                </div>
+                <label for="intermediateStartingYear" class="form-label">Intermediate Starting Year</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="intermediateStartingYear"
+                        name="intermediateStartingYear" placeholder="Enter your intermediate starting year">
+                </div>
+                <label for="intermediatePassingYear" class="form-label">Intermediate Passing Year</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="intermediatePassingYear"
+                        name="intermediatePassingYear" placeholder="Enter your intermediate passing year">
+                </div>
+                <label for="intermediateMarks" class="form-label">Intermediate Marks</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="intermediateMarks" name="intermediateMarks"
+                        placeholder="Enter your intermediate marks">
+                </div>
+                <label for="highSchool" class="form-label">High School Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="highSchool" name="highSchool"
+                        placeholder="Enter your high school name">
+                </div>
+                <label for="highSchoolSubjects" class="form-label">High School Board and Subjects</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="highSchoolSubjects" name="highSchoolSubjects"
+                        placeholder="Enter your high school subjects you had">
+                </div>
+                <label for="highSchoolStartingYear" class="form-label">High School Starting Year</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="highSchoolStartingYear"
+                        name="highSchoolStartingYear" placeholder="Enter your high school starting year">
+                </div>
+                <label for="highSchoolPassingYear" class="form-label">High School Passing Year</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="highSchoolPassingYear"
+                        name="highSchoolPassingYear" placeholder="Enter your high school passing year">
+                </div>
+                <label for="highSchoolMarks" class="form-label">High School Marks</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="highSchoolMarks" name="highSchoolMarks"
+                        placeholder="Enter your high school marks">
+                </div>
+                <label for="jobTitle1" class="form-label">Job Title</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="jobTitle1" name="jobTitle1"
+                        placeholder="Enter your job details">
+                </div>
+                <label for="jobStartDate1" class="form-label">Job Starting Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="jobStartDate1" name="jobStartDate1"
+                        placeholder="Enter your job's starting date">
+                </div>
+                <label for="jobEndDate1" class="form-label">Job Ending Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="jobEndDate1" name="jobEndDate1"
+                        placeholder="Enter your job's ending date">
+                </div>
+                <label for="jobDescription1" class="form-label">Job Description</label>
+                <div class="form-group">
+                    <textarea id="jobDescription1" name="jobDescription1" cols="90" rows="3" class="form-control"
+                        placeholder="Enter your job description"></textarea>
+                </div>
+                <label for="jobTitle2" class="form-label">Job Title</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="jobTitle2" name="jobTitle2"
+                        placeholder="Enter your job details">
+                </div>
+                <label for="jobStartDate2" class="form-label">Job Starting Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="jobStartDate2" name="jobStartDate2"
+                        placeholder="Enter your job's starting date">
+                </div>
+                <label for="jobEndDate2" class="form-label">Job Ending Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="jobEndDate2" name="jobEndDate2"
+                        placeholder="Enter your job's ending date">
+                </div>
+                <label for="jobDescription2" class="form-label">Job Description</label>
+                <div class="form-group">
+                    <textarea id="jobDescription2" name="jobDescription2" cols="90" rows="3" class="form-control"
+                        placeholder="Enter your job description"></textarea>
+                </div>
+                <label for="jobTitle3" class="form-label">Job Title</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="jobTitle3" name="jobTitle3"
+                        placeholder="Enter your job details">
+                </div>
+                <label for="jobStartDate3" class="form-label">Job Starting Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="jobStartDate3" name="jobStartDate3"
+                        placeholder="Enter your job's starting date">
+                </div>
+                <label for="jobEndDate3" class="form-label">Job Ending Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="jobEndDate3" name="jobEndDate3"
+                        placeholder="Enter your job's ending date">
+                </div>
+                <label for="jobDescription3" class="form-label">Job Description</label>
+                <div class="form-group">
+                    <textarea id="jobDescription3" name="jobDescription3" cols="90" rows="3" class="form-control"
+                        placeholder="Enter your job description"></textarea>
+                </div>
+                <label for="jobTitle4" class="form-label">Job Title</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="jobTitle4" name="jobTitle4"
+                        placeholder="Enter your job details">
+                </div>
+                <label for="jobStartDate4" class="form-label">Job Starting Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="jobStartDate4" name="jobStartDate4"
+                        placeholder="Enter your job's starting date">
+                </div>
+                <label for="jobEndDate4" class="form-label">Job Ending Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="jobEndDate4" name="jobEndDate4"
+                        placeholder="Enter your job's ending date">
+                </div>
+                <label for="jobDescription4" class="form-label">Job Description</label>
+                <div class="form-group">
+                    <textarea id="jobDescription4" name="jobDescription4" cols="90" rows="3" class="form-control"
+                        placeholder="Enter your job description"></textarea>
+                </div>
+                <label for="jobTitle5" class="form-label">Job Title</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="jobTitle5" name="jobTitle5"
+                        placeholder="Enter your job details">
+                </div>
+                <label for="jobStartDate5" class="form-label">Job Starting Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="jobStartDate5" name="jobStartDate5"
+                        placeholder="Enter your job's starting date">
+                </div>
+                <label for="jobEndDate5" class="form-label">Job Ending Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="jobEndDate5" name="jobEndDate5"
+                        placeholder="Enter your job's ending date">
+                </div>
+                <label for="jobDescription5" class="form-label">Job Description</label>
+                <div class="form-group">
+                    <textarea id="jobDescription5" name="jobDescription5" cols="90" rows="3" class="form-control"
+                        placeholder="Enter your job description"></textarea>
+                </div>
+                <label for="projectTitle1" class="form-label">Project Title</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="projectTitle1" name="projectTitle1"
+                        placeholder="Enter your project title">
+                </div>
+                <label for="projectStartDate1" class="form-label">Project Starting Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="projectStartDate1" name="projectStartDate1"
+                        placeholder="Enter your project's starting date">
+                </div>
+                <label for="projectEndDate1" class="form-label">Project Ending Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="projectEndDate1" name="projectEndDate1"
+                        placeholder="Enter your project's ending date">
+                </div>
+                <label for="projectDescription1" class="form-label">Project Description</label>
+                <div class="form-group">
+                    <textarea id="projectDescription1" name="projectDescription1" cols="90" rows="3"
+                        class="form-control" placeholder="Enter your project description"></textarea>
+                </div>
+                <label for="projectTitle2" class="form-label">Project Title</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="projectTitle2" name="projectTitle2"
+                        placeholder="Enter your project title">
+                </div>
+                <label for="projectStartDate2" class="form-label">Project Starting Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="projectStartDate2" name="projectStartDate2"
+                        placeholder="Enter your project's starting date">
+                </div>
+                <label for="projectEndDate2" class="form-label">Project Ending Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="projectEndDate2" name="projectEndDate2"
+                        placeholder="Enter your project's ending date">
+                </div>
+                <label for="projectDescription2" class="form-label">Project Description</label>
+                <div class="form-group">
+                    <textarea id="projectDescription2" name="projectDescription2" cols="90" rows="3"
+                        class="form-control" placeholder="Enter your project description"></textarea>
+                </div>
+                <label for="projectTitle3" class="form-label">Project Title</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="projectTitle3" name="projectTitle3"
+                        placeholder="Enter your project title">
+                </div>
+                <label for="projectStartDate3" class="form-label">Project Starting Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="projectStartDate3" name="projectStartDate3"
+                        placeholder="Enter your project's starting date">
+                </div>
+                <label for="projectEndDate3" class="form-label">Project Ending Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="projectEndDate3" name="projectEndDate3"
+                        placeholder="Enter your project's ending date">
+                </div>
+                <label for="projectDescription3" class="form-label">Project Description</label>
+                <div class="form-group">
+                    <textarea id="projectDescription3" name="projectDescription3" cols="90" rows="3"
+                        class="form-control" placeholder="Enter your project description"></textarea>
+                </div>
+                <label for="projectTitle4" class="form-label">Project Title</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="projectTitle4" name="projectTitle4"
+                        placeholder="Enter your project title">
+                </div>
+                <label for="projectStartDate4" class="form-label">Project Starting Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="projectStartDate4" name="projectStartDate4"
+                        placeholder="Enter your project's starting date">
+                </div>
+                <label for="projectEndDate4" class="form-label">Project Ending Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="projectEndDate4" name="projectEndDate4"
+                        placeholder="Enter your project's ending date">
+                </div>
+                <label for="projectDescription4" class="form-label">Project Description</label>
+                <div class="form-group">
+                    <textarea id="projectDescription4" name="projectDescription4" cols="90" rows="3"
+                        class="form-control" placeholder="Enter your project description"></textarea>
+                </div>
+                <label for="projectTitle5" class="form-label">Project Title</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="projectTitle5" name="projectTitle5"
+                        placeholder="Enter your project title">
+                </div>
+                <label for="projectStartDate5" class="form-label">Project Starting Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="projectStartDate5" name="projectStartDate5"
+                        placeholder="Enter your project's starting date">
+                </div>
+                <label for="projectEndDate5" class="form-label">Project Ending Date</label>
+                <div class="form-group">
+                    <input type="month" class="form-control mb-3" id="projectEndDate5" name="projectEndDate5"
+                        placeholder="Enter your project's ending date">
+                </div>
+                <label for="projectDescription5" class="form-label">Project Description</label>
+                <div class="form-group">
+                    <textarea id="projectDescription5" name="projectDescription5" cols="90" rows="3"
+                        class="form-control" placeholder="Enter your project description"></textarea>
+                </div>
+                <label for="skillDetail" class="form-label"> Skills </label>
+                <div class="form-group">
+                    <textarea id="skillDetail" name="skillDetail" cols="90" rows="3" class="form-control"
+                        placeholder="Enter your skills"></textarea>
+                </div>
+                <label for="languageDetail" class="form-label">Languages*</label>
+                <div class="form-group">
+                    <textarea id="languageDetail" name="languageDetail" cols="90" rows="3" class="form-control"
+                        placeholder="Enter the languages that you know" required></textarea>
+                </div>
+                <label for="areaOfInterest" class="form-label">Area of Interest</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="areaOfInterest" name="areaOfInterest"
+                        placeholder="Enter your areas of interest">
+                </div>
+                <label for="extracurricularDetail" class="form-label">Extra curricular activities</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="extracurricularDetail" name="extracurricularDetail"
+                        placeholder="Enter the extra curricular activities you took part in">
+                </div>
+
+                <button class="btn btn-dark d-grid mx-auto col-6 mt-4 mb-3" type="submit">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
 {% endblock body %}

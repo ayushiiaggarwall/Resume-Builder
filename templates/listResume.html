@@ -1,35 +1,66 @@
 {% extends 'base.html' %}
 
+<!-- changing title of page -->
+
 {% block title %}
 List Resume
 {% endblock title %}
 
 {% block body %}
+
 {% load static %}
 <div class="card-deck">
 
-{% for profile in profile %}
+  {% for profile in profile %}
 
-<div class="container-fluid pt-5 pb-3">
-  <div class="row">
-  <div class="col-sm-3"> </div>
-    <div class="col-sm-6 d-flex justify-content-center">
-      <div class="card" style="width: 20rem;">  <div class="card">
-    <img class="card-img-top" src="{% static '/images/resume-5.jpg' %}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title"> {{profile.name}}</h5>
-      <p class="card-text">{{profile.objective}}</p>
-    </div>
-    <div class="card-footer text-center">
-    <a href="/{{profile.id}}" class="btn btn-success"> Download Resume </a>
-    </div>
-  </div>
-  </div>
-  </div>
-  <div class="col-sm-3"> </div>
-  </div>
-  </div>
-  
-  {% endfor%}
+  <!-- if resume is created display info of that resume and option to view that resume -->
 
-{% endblock body %}
+  <div class="container-fluid pt-5 pb-3">
+    <div class="row">
+      <div class="col-sm-3"> </div>
+      <div class="col-sm-6 d-flex justify-content-center">
+        <div class="card" style="width: 20rem;">
+          <div class="card">
+            <img class="card-img-top" src="{% static '/images/resume-5.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{profile.name}}</h5>
+              <p class="card-text">{{profile.objective}}</p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="/{{profile.id}}" class="btn btn-success"> View Resume </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3"> </div>
+    </div>
+  </div>
+
+  <!-- if no resume created, display this -->
+
+  {% empty %}
+
+  <div class="container-fluid pt-5 pb-3">
+    <div class="row">
+      <div class="col-sm-3"> </div>
+      <div class="col-sm-6 d-flex justify-content-center">
+        <div class="card" style="width: 20rem;">
+          <div class="card">
+            <img class="card-img-top" src="{% static '/images/resume-5.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"> You haven't created resume yet! </h5>
+              <p class="card-text">Lets get started! Create your first resume now!</p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="/addResume" class="btn btn-success"> CREATE RESUME </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3"> </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+  {% endblock body %}

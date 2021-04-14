@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+<!-- changing title of page -->
+
 {% block title %}
 View Resume
 {% endblock title %}
@@ -7,207 +9,222 @@ View Resume
 {% block body %}
 {% load static %}
 
+<!-- creating template for displaying Resume -->
+
 <div class=" pt-4 pl-5 pr-5 ml-5 mr-5 pb-4">
-<div class="row">
-<div class="col-md-2">
-</div>
-<div class="col-md-8 border border-dark px-5 ">
-<div class="row">
-    <h2 class=" h1 text-center py-3"> {{user_profile.name}}</h2>
-<div class="col">
+  <div class="row">
+    <div class="col-md-2">
     </div>
-<div class="col">
-    </div> 
+    <div class="col-md-8 border border-dark px-5 ">
+      <div class="row">
+        <h2 class=" h1 text-center py-3"> {{user_profile.name}}</h2>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
 
-    <div class="col align-self-end pb-2">
-    <a href={{user_profile.github}}> {{user_profile.github}}</a> <br>
-    <a href={{user_profile.linkedin}}> {{user_profile.linkedin}}</a>
+        <div class="col align-self-end pb-2">
+          <a href={{user_profile.github}}> {{user_profile.github}}</a> <br>
+          <a href={{user_profile.linkedin}}> {{user_profile.linkedin}}</a>
+        </div>
+        <hr class="hl">
+
+        <div class="col-sm-4">
+          <h4 class="py-3 vl px-2">CONTACT</h4>
+          <p>{{user_profile.address}}</p>
+          <p>{{user_profile.phoneno}}</p>
+          <p>{{user_profile.email}}</p>
+        </div>
+
+        <div class="col-sm-8">
+          <h4 class="py-3 vl px-2">OBJECTIVE</h4>
+          <p>{{user_profile.objective}}</p>
+          <br>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <hr class="hl invisible">
+          <h4 class="py-3 vl px-2">SKILLS</h4>
+          <p>{{user_profile.skillDetail}}</p>
+        </div>
+        <div class="col-sm-8">
+
+          {% if user_profile.university1 or user_profile.university2 or user_profile.intermediateSchool or user_profile.highSchool %}
+          <hr class="hl">
+
+          <h4 class="py-3 vl px-2">EDUCATION</h4>
+
+          {% if user_profile.university1 %}
+
+          <p class="font-weight-bold">{{user_profile.degree1}} in {{user_profile.stream1}} --- (
+            {{user_profile.univStartingYear1}} - {{user_profile.univPassingYear1}} ) </p>
+          <p>{{user_profile.university1}} </p>
+          <p>{{user_profile.univResult1}} </p>
+
+          {%endif%}
+
+          {% if user_profile.university2 %}
+
+          <p class="font-weight-bold">{{user_profile.degree2}} in {{user_profile.stream2}} --- (
+            {{user_profile.univStartingYear2}} - {{user_profile.univPassingYear2}} ) </p>
+          <p>{{user_profile.university2}} </p>
+          <p>{{user_profile.univResult2}} </p>
+
+          {%endif%}
+
+          {% if user_profile.intermediateSchool %}
+
+          <p class="font-weight-bold"> Intermediate --- ( {{user_profile.intermediateStartingYear}} -
+            {{user_profile.intermediatePassingYear}} )</p>
+          <p> {{user_profile.intermediateSchool}} </p>
+          <p> {{user_profile.intermediateMarks}} in {{user_profile.intermediateSubjects}} </p>
+
+          {%endif%}
+
+          {% if user_profile.highSchool %}
+
+          <p class="font-weight-bold"> High School --- ( {{user_profile.highSchoolStartingYear}} -
+            {{user_profile.highSchoolPassingYear}} )</p>
+          <p> {{user_profile.highSchool}} </p>
+          <p> {{user_profile.highSchoolMarks}} in {{user_profile.highSchoolSubjects}} </p>
+
+          {%endif%}
+
+          {%endif%}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <hr class="hl invisible">
+          <h4 class="py-3 vl px-2">LANGUAGES</h4>
+          <p>{{user_profile.languageDetail}}</p>
+        </div>
+        <div class="col-sm-8">
+
+          {% if user_profile.jobTitle1 or user_profile.jobTitle2 or user_profile.jobTitle3 or user_profile.jobTitle4 or user_profile.jobTitle5 or user_profile.projectTitle1 or user_profile.projectTitle2 or user_profile.projectTitle3 or user_profile.projectTitle4 or user_profile.projectTitle5 %}
+
+          <hr class="hl">
+
+          <h4 class="py-3 vl px-2">EXPERIENCE</h4>
+
+          {% if user_profile.jobTitle1 %}
+
+          <p class="font-weight-bold">{{user_profile.jobTitle1}} --- ( {{user_profile.jobStartDate1}} -
+            {{user_profile.jobEndDate1}} ) </p>
+          <p>{{user_profile.jobDescription1}} </p>
+
+          {%endif%}
+          {% if user_profile.jobTitle2 %}
+
+          <p class="font-weight-bold">{{user_profile.jobTitle2}} --- ( {{user_profile.jobStartDate2}} -
+            {{user_profile.jobEndDate2}} ) </p>
+          <p>{{user_profile.jobDescription2}} </p>
+
+          {%endif%}
+          {% if user_profile.jobTitle3 %}
+
+          <p class="font-weight-bold">{{user_profile.jobTitle3}} --- ( {{user_profile.jobStartDate3}} -
+            {{user_profile.jobEndDate3}} ) </p>
+          <p>{{user_profile.jobDescription3}} </p>
+
+          {%endif%}
+          {% if user_profile.jobTitle4 %}
+
+          <p class="font-weight-bold">{{user_profile.jobTitle4}} --- ( {{user_profile.jobStartDate4}} -
+            {{user_profile.jobEndDate4}} ) </p>
+          <p>{{user_profile.jobDescription4}} </p>
+
+          {%endif%}
+          {% if user_profile.jobTitle5 %}
+
+          <p class="font-weight-bold">{{user_profile.jobTitle5}} --- ( {{user_profile.jobStartDate5}} -
+            {{user_profile.jobEndDate5}} ) </p>
+          <p>{{user_profile.jobDescription5}} </p>
+
+          {%endif%}
+
+          {% if user_profile.projectTitle1 %}
+
+          <p class="font-weight-bold">{{user_profile.projectTitle1}} --- ( {{user_profile.projectStartDate1}} -
+            {{user_profile.projectEndDate1}} ) </p>
+          <p>{{user_profile.projectDescription1}} </p>
+
+          {%endif%}
+          {% if user_profile.projectTitle2 %}
+
+          <p class="font-weight-bold">{{user_profile.projectTitle2}} --- ( {{user_profile.projectStartDate2}} -
+            {{user_profile.projectEndDate2}} ) </p>
+          <p>{{user_profile.projectDescription2}} </p>
+
+          {%endif%}
+          {% if user_profile.projectTitle3 %}
+
+          <p class="font-weight-bold">{{user_profile.projectTitle3}} --- ( {{user_profile.projectStartDate3}} -
+            {{user_profile.projectEndDate3}} ) </p>
+          <p>{{user_profile.projectDescription3}} </p>
+
+          {%endif%}
+          {% if user_profile.projectTitle4 %}
+
+          <p class="font-weight-bold">{{user_profile.projectTitle4}} --- ( {{user_profile.projectStartDate4}} -
+            {{user_profile.projectEndDate4}} ) </p>
+          <p>{{user_profile.projectDescription4}} </p>
+
+          {%endif%}
+          {% if user_profile.projectTitle5 %}
+
+          <p class="font-weight-bold">{{user_profile.projectTitle5}} --- ( {{user_profile.projectStartDate5}} -
+            {{user_profile.projectEndDate5}} ) </p>
+          <p>{{user_profile.projectDescription5}} </p>
+
+          {%endif%}
+
+          {%endif%}
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-8">
+
+          {% if user_profile.areaOfInterest %}
+
+          <hr class="hl">
+          <h4 class="py-3 vl px-2">AREAS OF INTEREST</h4>
+          <p>{{user_profile.areaOfInterest}} </p>
+
+          {%endif%}
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <p> </p>
+        </div>
+
+        <div class="col-sm-8">
+
+          {% if user_profile.extracurricularDetail %}
+
+          <hr class="hl">
+          <h4 class="py-3 vl px-2">EXTRA CURRICULAR ACTIVITIES</h4>
+          <p>{{user_profile.extracurricularDetail}} </p>
+
+          {%endif%}
+
+        </div>
+      </div>
     </div>
-    <hr class="hl">
 
-  <div class="col-sm-4">
-  <h4 class="py-3 vl px-2">CONTACT</h4>
-  <p>{{user_profile.address}}</p>
-  <p>{{user_profile.phoneno}}</p>
-  <p>{{user_profile.email}}</p>
-  </div>
-
-  <div class="col-sm-8">
-  <h4 class="py-3 vl px-2">OBJECTIVE</h4>
-  <p>{{user_profile.objective}}</p>
-  <br>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-4">
-<hr class="hl invisible">
-  <h4 class="py-3 vl px-2">SKILLS</h4>
-  <p>{{user_profile.skillDetail}}</p>
-  </div>
-  <div class="col-sm-8">
-
-  {% if user_profile.university1 or user_profile.university2 or  user_profile.intermediateSchool or user_profile.highSchool %}
-  <hr class="hl">
-
-  <h4 class="py-3 vl px-2">EDUCATION</h4>
-
-  {% if user_profile.university1%}
-
-  <p class="font-weight-bold">{{user_profile.degree1}} in {{user_profile.stream1}} --- ( {{user_profile.univStartingYear1}} - {{user_profile.univPassingYear1}} ) </p>
-  <p>{{user_profile.university1}} </p>
-  <p>{{user_profile.univResult1}} </p>
-
-  {% endif %}
-
-  {% if user_profile.university2%}
-
-  <p class="font-weight-bold">{{user_profile.degree2}} in {{user_profile.stream2}} --- ( {{user_profile.univStartingYear2}} - {{user_profile.univPassingYear2}} ) </p>
-  <p>{{user_profile.university2}} </p>
-  <p>{{user_profile.univResult2}} </p>
-
-  {% endif %}
-
-  {% if user_profile.intermediateSchool %}
-
-  <p class="font-weight-bold"> Intermediate --- ( {{user_profile.intermediateStartingYear}} - {{user_profile.intermediatePassingYear}} )</p>
-  <p> {{user_profile.intermediateSchool}} </p>
-  <p> {{user_profile.intermediateMarks}} in {{user_profile.intermediateSubjects}} </p>
-
-  {% endif %}
-
-  {% if user_profile.highSchool %}
-
-  <p class="font-weight-bold"> High School --- ( {{user_profile.highSchoolStartingYear}} - {{user_profile.highSchoolPassingYear}} )</p>
-  <p> {{user_profile.highSchool}} </p>
-  <p> {{user_profile.highSchoolMarks}} in {{user_profile.highSchoolSubjects}} </p>
-
-  {% endif %}
-  {% endif %}
-
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-4">
-  <hr class="hl invisible">
-  <h4 class="py-3 vl px-2">LANGUAGES</h4>
-  <p>{{user_profile.languageDetail}}</p>
-  </div>
-  <div class="col-sm-8">
-
-  {% if user_profile.jobTitle1 or  user_profile.jobTitle2 or  user_profile.jobTitle3 or  user_profile.jobTitle4 or  user_profile.jobTitle5 or  user_profile.projectTitle1 or  user_profile.projectTitle2 or  user_profile.projectTitle3 or  user_profile.projectTitle4 or  user_profile.projectTitle5 %}
-
-<hr class="hl">
-
-  <h4 class="py-3 vl px-2">EXPERIENCE</h4>
-
-   {% if user_profile.jobTitle1 %}
-
-  <p class="font-weight-bold">{{user_profile.jobTitle1}} --- ( {{user_profile.jobStartDate1}} - {{user_profile.jobEndDate1}} ) </p>
-  <p>{{user_profile.jobDescription1}} </p>
-
-{% endif %}
-   {% if user_profile.jobTitle2 %}
-
-  <p class="font-weight-bold">{{user_profile.jobTitle2}} --- ( {{user_profile.jobStartDate2}} - {{user_profile.jobEndDate2}} ) </p>
-  <p>{{user_profile.jobDescription2}} </p>
-
-{% endif %}
-   {% if user_profile.jobTitle3 %}
-
-  <p class="font-weight-bold">{{user_profile.jobTitle3}} --- ( {{user_profile.jobStartDate3}} - {{user_profile.jobEndDate3}} ) </p>
-  <p>{{user_profile.jobDescription3}} </p>
-
-{% endif %}
-   {% if user_profile.jobTitle4 %}
-
-  <p class="font-weight-bold">{{user_profile.jobTitle4}} --- ( {{user_profile.jobStartDate4}} - {{user_profile.jobEndDate4}} ) </p>
-  <p>{{user_profile.jobDescription4}} </p>
-
-{% endif %}
-   {% if user_profile.jobTitle5 %}
-
-  <p class="font-weight-bold">{{user_profile.jobTitle5}} --- ( {{user_profile.jobStartDate5}} - {{user_profile.jobEndDate5}} ) </p>
-  <p>{{user_profile.jobDescription5}} </p>
-
-{% endif %}
-
- {% if user_profile.projectTitle1 %}
-
-  <p class="font-weight-bold">{{user_profile.projectTitle1}} --- ( {{user_profile.projectStartDate1}} - {{user_profile.projectEndDate1}} ) </p>
-  <p>{{user_profile.projectDescription1}} </p>
-  
-{% endif %}
- {% if user_profile.projectTitle2 %}
-
-  <p class="font-weight-bold">{{user_profile.projectTitle2}} --- ( {{user_profile.projectStartDate2}} - {{user_profile.projectEndDate2}} ) </p>
-  <p>{{user_profile.projectDescription2}} </p>
-
-{% endif %}
- {% if user_profile.projectTitle3 %}
-
-  <p class="font-weight-bold">{{user_profile.projectTitle3}} --- ( {{user_profile.projectStartDate3}} - {{user_profile.projectEndDate3}} ) </p>
-  <p>{{user_profile.projectDescription3}} </p>
-
-{% endif %}
- {% if user_profile.projectTitle4 %}
-
-  <p class="font-weight-bold">{{user_profile.projectTitle4}} --- ( {{user_profile.projectStartDate4}} - {{user_profile.projectEndDate4}} ) </p>
-  <p>{{user_profile.projectDescription4}} </p>
-
-{% endif %}
- {% if user_profile.projectTitle5 %}
-
-  <p class="font-weight-bold">{{user_profile.projectTitle5}} --- ( {{user_profile.projectStartDate5}} - {{user_profile.projectEndDate5}} ) </p>
-  <p>{{user_profile.projectDescription5}} </p>
-
-{% endif %}
-
-{% endif %}
-
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-4">
+    <div class="col-md-2">
     </div>
-  <div class="col-sm-8">
-   
-   {% if user_profile.areaOfInterest %}
-
-<hr class="hl">
-  <h4 class="py-3 vl px-2">AREAS OF INTEREST</h4>
-  <p>{{user_profile.areaOfInterest}} </p>
-
-  {% endif %}
-
   </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-4">
-    <p> </p>
-    </div>
-
-<div class="col-sm-8">
-
- {% if user_profile.extracurricularDetail %}
-
-  <hr class="hl">
-  <h4 class="py-3 vl px-2">EXTRA CURRICULAR ACTIVITIES</h4>
-  <p>{{user_profile.extracurricularDetail}} </p>
-  
-  {% endif %}
-
-  </div>
-</div>
-</div>
-
-<div class="col-md-2">
-</div> 
-</div> 
 </div>
 
 {% endblock body %}
-

@@ -1,56 +1,70 @@
 {% extends 'base.html' %}
 
+<!-- changing title of page -->
+
 {% block title %}
 SignUp
 {% endblock title %}
 
 {% block body %}
 
-<div class="container">
-        <div class="row pt-2">
-            <div class="text-center col-md-4"></div>
-            <div class="col-md-4 mt-3 mb-3 my-auto border border-dark border-2 rounded-3">
-                <h3 class="text-center mb-3 mt-3">SIGNUP</h3>
-                
-                {% for message in messages %}
-                    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-                    {{message}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
+<!-- creating signup container -->
 
-                <form action="/signup" method="post">{% csrf_token %}
-                    <label for="Username" class="form-label">Username</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="Username" name="Username" placeholder="Enter the Username" required>
-                    </div>
-                    <label for="Fname" class="form-label">First Name</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="Fname" name="Fname" placeholder="Enter your first name" required>
-                    </div>
-                    <label for="Lname" class="form-label">Last Name</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-3" id="Lname" name="Lname" placeholder="Enter your last name" required>
-                    </div>
-                    <label for="Emailid" class="form-label">Email ID</label>
-                    <div class="form-group">
-                        <input type="email" class="form-control mb-3" id="Emailid" name="Emailid" placeholder="Enter your email id" required>
-                    </div>
-                    <label for="Password" class="form-label">Password</label>
-                    <div class="form-group">
-                        <input type="password" class="form-control mb-3" id="Password" name="Password" placeholder="Enter the password" required>
-                    </div>
-                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                    <div class="form-group">
-                        <input type="password" class="form-control mb-3" id="confirmPassword" name="confirmPassword" placeholder="Reenter the password" required>
-                    </div>
-                    <button class="btn btn-dark d-grid mx-auto col-6 mt-4 mb-3" type="submit">SUBMIT</button>
-                </form>
-                Already User? <a href="/login">Login</a>
-                <div class="mb-3"></div>
+<div class="container">
+    <div class="row pt-2">
+        <div class="text-center col-md-4"></div>
+        <div class="col-md-4 mt-3 mb-3 my-auto border border-dark border-2 rounded-3">
+            <h3 class="text-center mb-3 mt-3">SIGNUP</h3>
+
+            <!-- for loop for alert messages -->
+
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <div class="text-center col-md-4"></div>
+            {% endfor %}
+
+            <!-- signup form -->
+
+            <form action="/signup" method="post">{% csrf_token %}
+                <label for="Username" class="form-label">Username</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="Username" name="Username"
+                        placeholder="Enter the Username" required>
+                </div>
+                <label for="Fname" class="form-label">First Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="Fname" name="Fname"
+                        placeholder="Enter your first name" required>
+                </div>
+                <label for="Lname" class="form-label">Last Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" id="Lname" name="Lname"
+                        placeholder="Enter your last name" required>
+                </div>
+                <label for="Emailid" class="form-label">Email ID</label>
+                <div class="form-group">
+                    <input type="email" class="form-control mb-3" id="Emailid" name="Emailid"
+                        placeholder="Enter your email id" required>
+                </div>
+                <label for="Password" class="form-label">Password</label>
+                <div class="form-group">
+                    <input type="password" class="form-control mb-3" id="Password" name="Password"
+                        placeholder="Enter the password" required>
+                </div>
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <div class="form-group">
+                    <input type="password" class="form-control mb-3" id="confirmPassword" name="confirmPassword"
+                        placeholder="Reenter the password" required>
+                </div>
+                <button class="btn btn-dark d-grid mx-auto col-6 mt-4 mb-3" type="submit">SUBMIT</button>
+            </form>
+            Already User? <a href="/login">Login</a>
+            <div class="mb-3"></div>
         </div>
+        <div class="text-center col-md-4"></div>
     </div>
-    
+</div>
+
 {% endblock body %}
